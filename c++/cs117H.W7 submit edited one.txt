@@ -1,0 +1,32 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+void moveHanoitower(int d, string frompegs1, string withpegs2, string topegs3);
+
+int main()
+{
+	int disk; 
+	cout << "Move a disk from pegs1 to pegs3 " << endl;
+	cin >> disk; 
+	moveHanoitower(disk, "fromPegs1", "toPegs3", "withPegs2");
+
+
+	return 0;
+}
+
+void moveHanoitower(int disk, string frompegs1, string withpegs2, string topegs3)//three pegs in total
+{
+	if (disk >= 1)
+	{
+	cout <<"Move the disk from "<< frompegs1 << "  to  " << withpegs2 << endl;  //if the user enter only one disk 
+	}
+	else
+	{
+		
+		moveHanoitower(disk-1, frompegs1, withpegs2,topegs3);
+		cout <<"Move the disk from "<< frompegs1 << " to " << withpegs2 << endl;
+	moveHanoitower(disk-1, frompegs1, withpegs2, topegs3);
+	}
+		
+}

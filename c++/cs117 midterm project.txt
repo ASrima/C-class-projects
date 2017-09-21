@@ -1,0 +1,96 @@
+#include<iostream>
+using namespace std;
+
+class InventoryItem{
+    public:
+    
+    //constroctor
+    
+    InventoryItem(){_ID =0; _description = " "; _onHand= 0;  _cost=0.0;}
+    
+    //get functions
+    
+    int getItemID()const;
+    string getItemDescription()const;
+    int getItemAvailability()const;
+    double getCost()const;
+    
+    //set functions
+    
+    void setItemID(int itemID){_ID= itemID;}
+    void setItemDescription( string desc){_description=desc ;}
+    void setItemAvailability(int n){_onHand= n ;}
+    void setCost( double c){_cost=c;}
+    
+    //other functions
+    
+    void addItemShipmentReceived(int k);
+    void deductItemSales(int k);
+    
+    double getTotalInventoryCost()const;
+    
+    //destructor
+    
+    ~InventoryItem(){}
+    
+    private:
+    int _ID;
+    string _description;
+    int _onHand;
+    double _cost;
+};
+
+void InventoryItem::addItemShipmentReceived(int k)
+{
+     _onHand += k;
+    
+}
+void InventoryItem::deductItemSales(int k)
+    {
+        _onHand -= k;
+    }
+    
+ double InventoryItem::getTotalInventoryCost()const
+    {
+        return (_onHand * _cost);
+    }
+    
+int InventoryItem::getItemID()const
+    {
+        return _ID;
+    }
+    
+ string InventoryItem::getItemDescription()const
+    {
+        return _description;
+    }
+    
+ int InventoryItem::getItemAvailability()const
+    {
+        return _onHand;
+    }
+    
+  double InventoryItem::getCost()const
+    {
+        return _cost;
+    }
+    
+    int main ()
+    {
+        InventoryItem a ;
+        
+
+     a.setItemID(104);
+     a.setItemDescription("Wood");
+     a.setItemAvailability(40);
+     a.setCost( 50.00);
+     
+     
+
+     cout<<" The item ID is :"<<a.getItemID()<<endl;
+     cout<<" Item description is :"<<a.getItemDescription()<<endl;
+     cout<<" Available items are :"<<a.getItemAvailability()<<endl;
+     cout<<" cost is :"<<a.getCost()<<endl;
+
+    return 0;
+}

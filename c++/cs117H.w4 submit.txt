@@ -1,0 +1,96 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+ class Employee
+ {
+     public:
+         // constructors
+         Employee() { _emplID = 0; _fname = _lname = "No Name";}
+         Employee(int emplID, string fname, string lname): _emplID(emplID), _fname(fname), _lname(lname) {}
+
+         // get function members
+         int getEmployeeID() const { return _emplID; }
+         string getFirstName() const { return _fname; }
+        string getLastName() const {return _lname; }
+
+         // set function members
+        void setEmployeeID(int id);
+         void setFirstName(string fn) { _fname = fn; }
+         void setLastName(string ln) { _lname = ln; }
+
+        // display an employee object to standard output
+         void display() const;
+
+         // destructor
+         ~Employee() {}
+     private:
+         int _emplID;
+         string _fname, _lname;
+ };
+
+ // class Employee member functions implementation
+ void Employee::setEmployeeID(int id)
+ {
+     if (id >= 0)
+         _emplID = id;
+ }
+
+
+ void Employee::display() const
+ {
+     cout << "EMPLOYEE: " <<  _emplID << endl;
+     cout << "Last Name, First Name: " << _lname << ", " << _fname;
+     
+ }
+
+ void searchVector(const vector<Employee>& v, int key);
+ int main()
+ {
+     vector<Employee> emp;
+     int num;
+     int e;
+     int ID;
+     string firstName;
+     string lastName;
+     int key;
+
+     cout <<" Please enter the number of employee :"<<endl;
+     cin >> num;
+
+    for (int e = 0; e < num; e++)
+     {
+         cout << "Employee ID: "<<endl;
+         cin >> ID;
+         cout<<"Enter the first and last name of the employee : "<<endl;
+         cin >> firstName >> lastName;
+         Employee einfo(ID,firstName,lastName);
+         emp.push_back(einfo);
+          cout<< "Enter the search key: ";
+          cin>> key;
+          
+       searchVector(emp,key);
+     }
+
+
+ }
+
+ void searchVector(const vector<Employee>& emp, int key)
+ {
+     bool found=false;
+    for(int i=0;i<emp.size();i++){
+       // Employee e=v[i];
+         if(emp[i].getEmployeeID()== key)
+          {
+           cout<<"Employee ID is :"<<emp[i].getEmployeeID()<<endl;
+            cout<<"The First Name of the employee: "<< emp[i].getFirstName();
+            cout<<"The Last Name of the employee: "<< emp[i].getLastName();
+            found=true;
+         }
+     }
+     if(found == false)
+     {
+         cout<<" ------  Invalid ID. Employee ID is not found-----  "<<endl;
+
+     }
+ }

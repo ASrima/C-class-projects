@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+struct Student {
+ 
+   string firstName, lastName; // holds first and last name of a student
+   double testScore1, testScore2, testScore3; // holds three test scores
+   double testAverage; // holds the average of the three scores
+};
+int main ()
+{
+    Student s;
+    
+    cout<<"Enter the first name of the Student :"<<s.firstName<<endl;
+    cin>>s.firstName;
+    
+    cout<<"Enter the last name of the Student :"<<s.lastName<<endl;
+    cin>>s.lastName;
+    
+    cout<<" Enter the 3 test scores "<<endl;
+    cout<<endl;
+    cout<<" Enter the first test score :"<<endl;
+    cin>>s.testScore1;
+    cout<<"Enter the second test score :"<<endl;
+    cin>>s.testScore3;
+    cout<<"Enter the third test score :"<<endl;
+    cin>>s.testScore3;
+    
+    
+    
+    s.testAverage = (s.testScore1 + s.testScore2 + s.testScore3)/3;
+    
+    cout<<"Displying Information for "<<endl;
+    cout<<endl;
+    
+    cout<<" First Name and last name of the Student is : "<<s.firstName<<" "<<s.lastName<<endl;
+    cout<<" The 3 test scores are :"<<s.testScore1<<", "<<s.testScore2<<", "<<s.testScore3<<endl;
+    cout<<" The test average is :"<<s.testAverage<<endl;
+    
+    return 0;
+}
