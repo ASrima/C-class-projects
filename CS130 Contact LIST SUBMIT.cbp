@@ -1,44 +1,69 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<CodeBlocks_project_file>
-	<FileVersion major="1" minor="6" />
-	<Project>
-		<Option title="po" />
-		<Option execution_dir="C:/Users/COOK 10/Desktop/po/" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
-		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/po" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/po" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
-		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-		</Compiler>
-		<Unit filename="../Desktop/po/main.cpp" />
-		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
-			<lib_finder disable_auto="1" />
-		</Extensions>
-	</Project>
-</CodeBlocks_project_file>
+#include <iostream> //overload cin write fname. lname and phoneNum at once instead of typing 3 times
+#include<list>
+using namespace std;
+
+class Contacts
+{
+private:
+    string firstName, lastName, phoneNum;
+
+public:
+    Contacts(string x=" ", string y=" ", string z=" "):
+	firstName(x), lastName(y), phoneNum(z)
+    {
+    }
+
+    friend ostream& operator<< (ostream &out, const Contacts &contacts);
+};
+
+ostream& operator<< (ostream &out, const Contacts &contacts)
+{
+    // Since operator<< is a friend of the Contacts class, we can access
+	 //Contacts's members directly.
+    out << "Contacts(" << contacts.firstName << ", " << contacts.lastName << ", "
+	<< contacts.phoneNum << ")";
+
+    return out;
+}
+
+int main()
+{  string input;
+   string firstName, lastName, phoneNum;
+  // construct
+  // the iterator constructor can also be used to construct from arrays:
+ // string myints[] = {"ayesha","sultana","456321"};
+  list<Contacts> mylist ;
+
+     cout<<" Enter  End to stop"<<endl;
+     cin>>input;
+
+while (input!="End")
+{
+
+     cout<<"Do you want to enter an input? "<<endl;
+     cout<<" Enter Y or N "<<endl;
+     cin>>input;
+     cout<<"Enter First Name: ";
+     cin>>firstName;  //asks the user for first name
+     cout<<"Enter Last Name: ";  //asks the user for last name
+     cin>>lastName;
+     cout<<"Enter Phone Number: ";  //asks the user for phone number
+     cin>>phoneNum;
+     //erlist<Contacts> mylist;
+     mylist.push_front(Contacts (firstName,lastName, phoneNum));
+     cout<<mylist.front();
+     cout<<" Enter  End to stop"<<endl;
+     cin>>input;
+
+  }
+
+    cout << "The contacts are: ";
+for (list<Contacts>::iterator it = mylist.begin(); it != mylist.end(); it++)
+    cout << *it << ' ';
+
+    cout << '\n';
+
+
+  return 0;
+}
+
